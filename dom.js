@@ -3,7 +3,7 @@
 function init() {
     let element = document.getElementById('walkBtn');
     element.addEventListener('click', function () {
-        walk();
+        display();
     });
 
     element = document.getElementById('modifyBtn');
@@ -21,6 +21,40 @@ function init() {
         remove();
     });
 }
+function display() {
+    let el1;
+
+    el1 = document.getElementById('p1');
+    customwrite(el1);
+
+    el1 = el1.firstChild;
+    customwrite(el1);
+
+    el1 = el1.nextSibling;
+    customwrite(el1);
+
+    el1 = el1.lastChild;
+    customwrite(el1);
+
+    el1 = el1.parentNode.parentNode.parentNode;
+    customwrite(el1);
+
+    el1 = el1.querySelector('section > *');
+    customwrite(el1);
+
+
+}
+let tempString = 'This page says' + '\n';
+function customwrite(el1) {
+    let nodeType = el1.nodeType;
+    let nodeName = el1.nodeName;
+    let nodeValue = el1.nodeValue;
+
+    tempString += 'Node Type: ' + nodeType +'\n'+'Node Name: '+ nodeName +'\n'+'Node Value: ' 
+    + nodeValue + '\n';
+    document.getElementById('nodeinfo').innerHTML = tempString;
+}
+
 
 function walk() {
     let el;
@@ -50,9 +84,7 @@ function showNode(el) {
     let nodeName = el.nodeName;
     let nodeValue = el.nodeValue;
 
-
     alert(`Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`);
-
 
 }
 
