@@ -6,6 +6,11 @@ function init() {
         display();
     });
 
+    element = document.getElementById('adwalkBtn');
+    element.addEventListener('click', function () {
+        advancedWalk();
+    });
+
     element = document.getElementById('modifyBtn');
     element.addEventListener('click', function () {
         modify();
@@ -20,7 +25,27 @@ function init() {
     element.addEventListener('click', function () {
         remove();
     });
+
 }
+
+let textarea = document.getElementById("nodeinfo1");
+depth = 0;
+function advancedWalk() {
+    const rootNode = document.querySelector("html");
+    walkTree(rootNode, 0)
+}
+function walkTree(node, indent) {
+    if (node.nodeType === Node.TEXT_NODE && node.nodeType === Node.COMMENT_NODE) {
+        return;
+    }
+    indent = depth * 4;
+    textarea.value += indent + node.tagName + "\n";
+    let children = node.childNodes;
+    for (let i = 0; i < children.length; i++) {
+        walkTree(children[i], indent + 1);
+    }
+}
+
 function display() {
     let el1;
 
@@ -50,8 +75,8 @@ function customwrite(el1) {
     let nodeName = el1.nodeName;
     let nodeValue = el1.nodeValue;
 
-    tempString += 'Node Type: ' + nodeType +'\n'+'Node Name: '+ nodeName +'\n'+'Node Value: ' 
-    + nodeValue + '\n';
+    tempString += 'Node Type: ' + nodeType + '\n' + 'Node Name: ' + nodeName + '\n' + 'Node Value: '
+        + nodeValue + '\n';
     document.getElementById('nodeinfo').innerHTML = tempString;
 }
 
