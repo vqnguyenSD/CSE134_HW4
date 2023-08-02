@@ -26,6 +26,17 @@ function init() {
         remove();
     });
 
+    element = document.getElementById('advModifyBtn');
+    element.addEventListener('click', function(){
+        changeH();
+    });
+
+
+}
+
+function changeH(){
+    let h1tag = document.querySelector('h1');
+    h1tag.textContent = "DOM Manipulation is Fun";
 }
 
 let textarea = document.getElementById("nodeinfo1");
