@@ -46,15 +46,32 @@ function init() {
         safeDelete();
     });
 
+    element = document.getElementById('dltSelector');
+    element.addEventListener('click', function () {
+        deleteCSS();
+    });
+
+
+}
+
+function deleteCSS() {
+    const itemRemoved = document.querySelector("#removeSel");
+    const chosenSel = itemRemoved.value;
+    const listOfThingsToDelete = document.querySelectorAll(chosenSel);
+    for (let i = 0; i < listOfThingsToDelete.length; i++) {
+        listOfThingsToDelete[i].remove();
+    }
+
 }
 
 function safeDelete() {
+
     const listOfBodyChild = document.querySelector("body");
     console.log(listOfBodyChild.children);
-    console.log(listOfBodyChild.children.length);
     let saveTagName = listOfBodyChild.children[2].tagName;
     let i = 0;
     while (true) {
+        if (listOfBodyChild.children.length > 1) {
             if (listOfBodyChild.children[i].tagName !== saveTagName) {
                 listOfBodyChild.removeChild(listOfBodyChild.children[i]);
             }
@@ -64,28 +81,11 @@ function safeDelete() {
             else {
                 return;
             }
-    }
-
-    /*
-    for(let i = 0; i < listOfBodyChild.children.length; i++){
-        
-        if(listOfBodyChild.children[i].tagName != saveTagName){
-            listOfBodyChild.removeChild(listOfBodyChild.children[i]);
         }
-        continue; 
-
-    }
-    */
-
-    /*
-    for(let i =0; i < bodyChildren.length; i++){
-        if(bodyChildren[i].tagName !== "section" ){
-            startNode.removeChild(bodyChildren[0]);
+        else{
+            return;
         }
-        continue;
     }
-    */
-
 }
 
 function createNewEvent() {
