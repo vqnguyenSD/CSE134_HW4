@@ -15,6 +15,11 @@ function init() {
     element.addEventListener('click', function () {
         modify();
     });
+    element = document.getElementById('advModifyBtn');
+    element.addEventListener('click', function () {
+        changeHTagColor();
+        turnOnOffAnimation();
+    });
 
     element = document.getElementById('addBtn');
     element.addEventListener('click', function () {
@@ -27,14 +32,79 @@ function init() {
     });
 
     element = document.getElementById('advModifyBtn');
-    element.addEventListener('click', function(){
+    element.addEventListener('click', function () {
         changeH();
     });
 
-
+    element = document.getElementById('chosenElement');
+    element.addEventListener('click', function () {
+        createNewEvent();
+    });
 }
 
-function changeH(){
+function createNewEvent() {
+    const outputElement = document.getElementById('outputPlace');
+    const elementOptions = document.querySelector('#elementMenu');
+    const elementType = elementOptions.value;
+    const contentOfElement = document.querySelector('#content');
+    const elementContent = contentOfElement.value;
+    const elementTagInput = document.querySelector('#elementTag');
+    const elementTag = elementTagInput.value;
+
+    let newElement;
+    let contentInfo;
+    switch (elementType) {
+
+        case 'comment':
+            contentInfo = elementContent || 'New Comment';
+            newElement = document.createTextNode(contentInfo + " created at " + new Date().toLocaleString());
+            break;
+        case 'textNode':
+            contentInfo = elementContent || 'New Text Node';
+            newElement = document.createTextNode(contentInfo + ' created at ' + new Date().toLocaleString());
+            break;
+        case 'element':
+            const elementTagName = elementTag || 'div';
+            contentInfo = 'New Element created at ' + new Date().toLocaleString();
+            newElement = document.createElement(elementTagName);
+            newElement.textContent = contentInfo;
+            break;
+        default:
+            return;
+    }
+    outputElement.className = 'new-element'
+    outputElement.appendChild(newElement);
+}
+
+
+function generateRandomDarkColor() {
+    const darkColors = [
+        'var(--darkcolor1)',
+        'var(--darkcolor2)',
+        'var(--darkcolor3)',
+        'var(--darkcolor4)',
+        'var(--darkcolor5)',
+        'var(--darkcolor6)',
+    ];
+    const generateRIndex = Math.floor(Math.random() * darkColors.length);
+    return darkColors[generateRIndex];
+}
+
+function turnOnOffAnimation() {
+    const pTag = document.querySelector('p');
+    pTag.classList.toggle('shmancy');
+}
+/**
+ * Change color of h1
+ */
+
+function changeHTagColor() {
+    const h1Tag = document.querySelector('h1');
+    const getRandomDarkColor = generateRandomDarkColor();
+    h1Tag.style.color = getRandomDarkColor;
+}
+
+function changeH() {
     let h1tag = document.querySelector('h1');
     h1tag.textContent = "DOM Manipulation is Fun";
 }
