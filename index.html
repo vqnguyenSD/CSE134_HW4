@@ -25,6 +25,13 @@
             font-weight: bold;
         }
 
+        img {
+            width: 500px;
+            height: 250px;
+            border: 1px solid #000;
+            margin: 10px 0;
+        }
+
         #controls {
             background: #eee;
             margin: 2em;
@@ -44,6 +51,15 @@
         #p1 {
             color: slategray;
             font-size: 3rem;
+        }
+        .fancytitle{
+            font-style: italic;
+            text-decoration: wavy;
+            text-decoration: solid;
+        }
+        .fancyp{
+            font-style: oblique;
+            font-family: 'Courier New', Courier, monospace;
         }
 
         .fancy {
@@ -174,11 +190,11 @@
                 <legend>Remove</legend>
                 <label for="removeBtn">Simple Delete</label>
                 <input type="button" id="removeBtn" value="Remove">
-                <input type = "button" id ="safeDlt" value ="Safe Delete">
+                <input type="button" id="safeDlt" value="Safe Delete">
 
                 <!--Adding remove by selector-->
                 <input type="text" id="removeSel" placeholder="CSS selector">
-                <input type = "button" id ="dltSelector" value ="Delete CSS selector">
+                <input type="button" id="dltSelector" value="Delete CSS selector">
 
 
                 <!--
@@ -193,7 +209,8 @@
 
             <fieldset>
                 <legend>Clone</legend>
-                <input type = "button" id="clone" value="Clone">
+                <input type="button" id="clone" value="Clone">
+                <input type="button" id="cardClone" value="Advanced Clone">
                 <!--
           Q5a) Add a button "Basic Clone" that clones the p tag and adds it to the DOM.  You can add it to the same area you added new content.  Be cautious with your cloning to modify attributes
 
@@ -214,12 +231,13 @@
 
                 <input type="text" id="content" placeholder="Content">
 
-                <input type = "text" id="elementTag" placeholder="Tag element">
+                <input type="text" id="elementTag" placeholder="Tag element">
 
                 <input type="button" id="chosenElement" value="Choose">
 
                 <div name="output" id="outputPlace"></div>
             </fieldset>
+
 
         </form>
     </section>
@@ -228,6 +246,34 @@
     <h2>Look out below these will get deleted if you press the buttons above!</h2>
     <p>I am scared of being deleted!</p>
     <p>Me too. Oh noes, here comes the <code>removeChild()</code> method, it's going to delete us!</p>
+    <template id="cardRoot">
+        <section id="card1">
+            <h3 class="fancytitle"> Beach and Bird</h3>
+            <p class="fancyp">Reminding of FreeDom. We all lives once, so live the life you want!</p>
+            <picture>
+                <img src="C:\Users\Van Quang Nguyen\Downloads\pedro-monteiro-HfIex7qwTlI-unsplash.jpg"
+                    alt="Beach and Bird">
+            </picture>
+            <br>
+            <a href="https://unsplash.com/s/photos/Beach">Beach Link</a>
+        </section>
+
+        <section id="card2">
+            <h3 class="fancytitle"> Sky</h3>
+            <p class="fancyp">Let's traveling to some places this summer!</p>
+            <picture>
+                <img src="C:\Users\Van Quang Nguyen\Downloads\frank-mckenna-OD9EOzfSOh0-unsplash.jpg"
+                    alt="Summer Time">
+            </picture>
+            <br>
+            <a href="https://unsplash.com/s/photos/Beach">Sky Link</a>
+        </section>
+
+
+    </template>
+    <section id="cardPlace">
+
+    </section>
 
     <!-- put all your new code in this dom.js file -->
     <script src="dom.js"></script>

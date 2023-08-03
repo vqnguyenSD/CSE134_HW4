@@ -56,7 +56,24 @@ function init() {
         clone();
     });
 
+    element = document.getElementById('cardClone');
+    element.addEventListener('click', function () {
+        advancedClone();
+    });
 
+
+}
+
+function advancedClone(){
+    const placeForCard = document.querySelector("#cardPlace");
+    const templateContent = document.querySelector("#cardRoot");
+    let card1ToClone = templateContent.content.querySelector("#card1");
+    let card2ToClone = templateContent.content.querySelector("#card2");
+    console.log(card1ToClone);
+    let card1Copy = card1ToClone.cloneNode(true);
+    let card2Copy = card2ToClone.cloneNode(true);
+    placeForCard.appendChild(card1Copy);
+    placeForCard.appendChild(card2Copy);
 }
 
 function clone(){
