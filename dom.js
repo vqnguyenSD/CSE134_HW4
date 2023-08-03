@@ -51,6 +51,19 @@ function init() {
         deleteCSS();
     });
 
+    element = document.getElementById('clone');
+    element.addEventListener('click', function () {
+        clone();
+    });
+
+
+}
+
+function clone(){
+    const nodeToAppend = document.querySelector("#outputPlace");
+    const elementToClone = document.querySelector("#p1");
+    let copyOfp1 = elementToClone.cloneNode(true);
+    nodeToAppend.appendChild(copyOfp1);
 
 }
 
