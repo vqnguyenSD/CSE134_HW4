@@ -40,6 +40,52 @@ function init() {
     element.addEventListener('click', function () {
         createNewEvent();
     });
+
+    element = document.getElementById('safeDlt');
+    element.addEventListener('click', function () {
+        safeDelete();
+    });
+
+}
+
+function safeDelete() {
+    const listOfBodyChild = document.querySelector("body");
+    console.log(listOfBodyChild.children);
+    console.log(listOfBodyChild.children.length);
+    let saveTagName = listOfBodyChild.children[2].tagName;
+    let i = 0;
+    while (true) {
+            if (listOfBodyChild.children[i].tagName !== saveTagName) {
+                listOfBodyChild.removeChild(listOfBodyChild.children[i]);
+            }
+            else if (listOfBodyChild.children[i].tagName === saveTagName) {
+                i += 1;
+            }
+            else {
+                return;
+            }
+    }
+
+    /*
+    for(let i = 0; i < listOfBodyChild.children.length; i++){
+        
+        if(listOfBodyChild.children[i].tagName != saveTagName){
+            listOfBodyChild.removeChild(listOfBodyChild.children[i]);
+        }
+        continue; 
+
+    }
+    */
+
+    /*
+    for(let i =0; i < bodyChildren.length; i++){
+        if(bodyChildren[i].tagName !== "section" ){
+            startNode.removeChild(bodyChildren[0]);
+        }
+        continue;
+    }
+    */
+
 }
 
 function createNewEvent() {
